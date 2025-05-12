@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QiQiWedding - Mâm Quả Cưới Hỏi</title>
+  <meta name="description" content="QiQiWedding chuyên cung cấp mâm quả cưới hỏi hiện đại và truyền thống tại TP. Hồ Chí Minh.">
+  <meta name="keywords" content="mâm quả cưới hỏi, tráp cưới, lễ ăn hỏi, đám hỏi, cưới truyền thống, cưới hiện đại, Hóc Môn, TP. HCM">
+  <meta name="author" content="QiQiWedding">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffaf0;
+      color: #5b3a00;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #fffaf0;
+      text-align: center;
+      padding: 20px 10px 0;
+    }
+    header h1 {
+      font-size: 3em;
+      color: #b8860b;
+    }
+    nav {
+      background-color: #b8860b;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+    }
+    h2 {
+      color: #a0522d;
+      border-bottom: 2px solid #b8860b;
+      padding-bottom: 5px;
+    }
+    h3 {
+      margin-top: 15px;
+      color: #8b4513;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+    .gallery img {
+      max-width: 100%;
+      width: 250px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid #b8860b;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .hidden {
+      display: none;
+    }
+    .button {
+      background-color: #b8860b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    footer {
+      background-color: #f5deb3;
+      color: #5b3a00;
+      text-align: center;
+      padding: 20px;
+    }
+    form {
+      max-width: 200px;
+      margin: 30px auto;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+    form label {
+      font-weight: bold;
+    }
+    .color-options button {
+      margin: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #b8860b;
+      color: white;
+      cursor: pointer;
+    }
+    .color-gallery {
+      display: none;
+      margin-top: 10px;
+    }
+    .color-gallery.active {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+.color-gallery img {
+  width: 50px;
+  height: 50;
+  border-radius: 10px;
+  border: 2px solid #b8860b;
+}
+
+    }
+  </style>
+  <script>
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      const button = document.querySelector(`[onclick="toggleSection('${id}')"]`);
+      const isHidden = section.classList.contains('hidden');
+      section.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', !isHidden);
+    }
+
+    function toggleColors(groupId) {
+      document.getElementById(groupId).classList.toggle("hidden");
+    }
+
+    function showGallery(groupPrefix, color) {
+      const galleries = document.querySelectorAll(`[id^="${groupPrefix}-"]`);
+      galleries.forEach(g => g.classList.remove("active"));
+      const target = document.getElementById(`${groupPrefix}-${color}`);
+      if (target) target.classList.add("active");
+    }
+  </script>
+</head>
+<body>
+
+  <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+    <img src="logo.png" alt="QiQiWedding Logo" style="height: 100px;" />
+    <div>
+      <h1>QiQiWedding</h1>
+      <p>MÂM QUẢ CƯỚI HỎI HIỆN ĐẠI HÓC MÔN</p>
+    </div>
+  </div>
+</header>
+
+  <nav>
+    <a href="#trap">Tráp Dạm Ngõ</a>
+    <a href="#mamqua">Mâm Quả</a>
+    <a href="#lienhe">Liên Hệ</a>
+  </nav>
+
+  <!-- Tráp Dạm Ngõ -->
+  <section id="trap">
+    <h2>Tráp Dạm Ngõ</h2>
+    <button class="button" onclick="toggleSection('trap-detail')" aria-expanded="false" aria-controls="trap-detail">Xem chi tiết</button>
+    <div id="trap-detail" class="hidden">
+      <h3>Tráp Màu trắng</h3>
+      <div class="gallery">
+        <img src="damngotrang.jpg" 
+      </div>
+      <h3>Tráp màu hồng</h3>
+      <div class="gallery">
+        <img src="damngohong.jpg"      
+	</div>
+      <h3>Tráp màu đỏ</h3>
+      <div class="gallery">
+        <img src="damngodo.jpg"       
+	</div>
+    </div>
+  </section>
+
+<!-- Mâm Quả -->
+  <section id="mamqua">
+    <h2>Mâm Quả</h2>
+    <button class="button" onclick="toggleSection('mamqua-detail')" aria-expanded="false" aria-controls="mamqua-detail">Xem chi tiết</button>
+    <div id="mamqua-detail" class="hidden">
+
+<h3>Mâm Quả Truyền Thống</h3>
+
+<!-- Mâm 6 quả -->
+<h4>Mâm 6 quả</h4>
+<button class="button" onclick="toggleColors('colors-6')">Chọn màu</button>
+<div id="colors-6" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam6', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam6', 'trang')">Màu trắng</button>
+  </div>
+
+  <div id="mam6-do" class="color-gallery">
+    <img src="trapdott6.jpg" alt="Mâm 6 quả màu đỏ">
+  </div>
+
+  <div id="mam6-trang" class="color-gallery">
+    <img src="trangtt.jpg" alt="Mâm 6 quả màu trắng"> 
+  
+  </div>
+</div>
+
+<!-- Mâm 7 quả -->
+<h4>Mâm 7 quả</h4>
+<button class="button" onclick="toggleColors('colors-7')">Chọn màu</button>
+<div id="colors-7" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam7', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam7', 'trang')">Màu trắng</button>
+    <button onclick="showGallery('mam7', 'hong')">Màu hồng</button>
+  </div>
+
+  <div id="mam7-do" class="color-gallery">
+    <img src="mam7-do-1.jpg" alt="Mâm 7 quả màu đỏ">
+    <img src="mam7-do-2.jpg" alt="Mâm 7 quả màu đỏ 2">
+  </div>
+
+  <div id="mam7-trang" class="color-gallery">
+    <img src="mam7-trang-1.jpg" alt="Mâm 7 quả màu trắng">
+  </div>
+
+  <div id="mam7-hong" class="color-gallery">
+    <img src="mam7-hong-1.jpg" alt="Mâm 7 quả màu hồng">
+  </div>
+</div>
+
+<!-- Mâm 8 quả -->
+<h4>Mâm 8 quả</h4>
+<button class="button" onclick="toggleColors('colors-8')">Chọn màu</button>
+<div id="colors-8" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam8', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam8', 'trang')">Màu trắng</button>
+    <button onclick="showGallery('mam8', 'hong')">Màu hồng</button>
+  </div>
+
+  <div id="mam8-do" class="color-gallery">
+    <img src="mam8-do-1.jpg" alt="Mâm 8 quả màu đỏ">
+    <img src="mam8-do-2.jpg" alt="Mâm 8 quả màu đỏ 2">
+  </div>
+
+  <div id="mam8-trang" class="color-gallery">
+    <img src="mam8-trang-1.jpg" alt="Mâm 8 quả màu trắng">
+  </div>
+
+  <div id="mam8-hong" class="color-gallery">
+    <img src="mam8-hong-1.jpg" alt="Mâm 8 quả màu hồng">
+  </div>
+</div>
+
+<h3>Mâm Quả Hiện Đại</h3>
+
+<!-- Mâm 6 quả -->
+<h4>Mâm 6 quả</h4>
+<button class="button" onclick="toggleColors('colors-6-hientai')">Chọn màu</button>
+<div id="colors-6-hientai" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam6-hientai', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam6-hientai', 'trang')">Màu trắng</button>
+    <button onclick="showGallery('mam6-hientai', 'hong')">Màu hồng</button>
+  </div>
+
+  <div id="mam6-hientai-do" class="color-gallery">
+    <img src="mam6-hientai-do-1.jpg" alt="Mâm 6 quả hiện đại màu đỏ">
+  </div>
+
+  <div id="mam6-hientai-trang" class="color-gallery">
+    <img src="mam6-hientai-trang-1.jpg" alt="Mâm 6 quả hiện đại màu trắng">
+  </div>
+
+  <div id="mam6-hientai-hong" class="color-gallery">
+    <img src="mam6-hientai-hong-1.jpg" alt="Mâm 6 quả hiện đại màu hồng">
+  </div>
+</div>
+
+<!-- Mâm 7 quả -->
+<h4>Mâm 7 quả</h4>
+<button class="button" onclick="toggleColors('colors-7-hientai')">Chọn màu</button>
+<div id="colors-7-hientai" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam7-hientai', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam7-hientai', 'trang')">Màu trắng</button>
+    <button onclick="showGallery('mam7-hientai', 'hong')">Màu hồng</button>
+  </div>
+
+  <div id="mam7-hientai-do" class="color-gallery">
+    <img src="mam7-hientai-do-1.jpg" alt="Mâm 7 quả hiện đại màu đỏ">
+  </div>
+
+  <div id="mam7-hientai-trang" class="color-gallery">
+    <img src="mam7-hientai-trang-1.jpg" alt="Mâm 7 quả hiện đại màu trắng">
+  </div>
+
+  <div id="mam7-hientai-hong" class="color-gallery">
+    <img src="mam7-hientai-hong-1.jpg" alt="Mâm 7 quả hiện đại màu hồng">
+  </div>
+</div>
+
+<!-- Mâm 8 quả -->
+<h4>Mâm 8 quả</h4>
+<button class="button" onclick="toggleColors('colors-8-hientai')">Chọn màu</button>
+<div id="colors-8-hientai" class="hidden">
+  <div class="color-options">
+    <button onclick="showGallery('mam8-hientai', 'do')">Màu đỏ</button>
+    <button onclick="showGallery('mam8-hientai', 'trang')">Màu trắng</button>
+    <button onclick="showGallery('mam8-hientai', 'hong')">Màu hồng</button>
+  </div>
+
+  <div id="mam8-hientai-do" class="color-gallery">
+    <img src="mam8-hientai-do-1.jpg" alt="Mâm 8 quả hiện đại màu đỏ">
+    <img src="mam8-hientai-do-2.jpg" alt="Mâm 8 quả hiện đại màu đỏ 2">
+  </div>
+
+  <div id="mam8-hientai-trang" class="color-gallery">
+    <img src="mam8-hientai-trang-1.jpg" alt="Mâm 8 quả hiện đại màu trắng">
+  </div>
+
+  <div id="mam8-hientai-hong" class="color-gallery">
+    <img src="mam8-hientai-hong-1.jpg" alt="Mâm 8 quả hiện đại màu hồng">
+  </div>
+</div>
+
+
+  </section>
+<!-- Liên Hệ -->
+<section id="lienhe">
+  <h2>Liên Hệ</h2>
+  <p><strong>QiQiWedding - Mâm Quả Cưới Hỏi</strong></p>
+  <p>📍 Địa chỉ: 79 Ấp Tân Thới 1, Xã Tân Hiệp, Huyện Hóc Môn, TP HCM</p>
+  <p>📞 Điện thoại: <a href="tel:0903986049">090 398 60 49</a></p>
+  <p>📧 Email: <a href="mailto:hamyquyen1@gmail.com">hamyquyen1@gmail.com</a></p>
+  <p>📌 Google Maps: 
+    <a href="https://www.google.com/maps/place/L%C3%B2+B%C3%A1nh+M%C3%AC+B%E1%BA%A3y+Th%C3%BAy/@10.8987388,106.5978579,21z/data=!4m6!3m5!1s0x3174d591328f9e69:0x3065af40b18ee2f8!8m2!3d10.8986695!4d106.5976766!16s%2Fg%2F11j8wlwzfk?entry=ttu" target="_blank">
+      Xem bản đồ & chỉ đường
+    </a>
+  </p>
+  <div style="margin-top:20px">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.390491323554!2d106.5978579!3d10.8987388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d591328f9e69%3A0x3065af40b18ee2f8!2zTMOqIELhuqFuIFbDrSBC4bqteSBUaOG7pyBUaMO6eQ!5e0!3m2!1svi!2s!4v1715524280000!5m2!1svi!2s"
+      width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+
+
+    <h3>Gửi yêu cầu tư vấn</h3>
+    <form action="mailto:hamyquyen1@gmail.com" method="POST" enctype="text/plain">
+      <label for="name">Họ tên:</label><br>
+      <input type="text" id="name" name="name" required><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br>
+
+      <label for="message">Nội dung:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br>
+
+      <button type="submit" class="button">Gửi</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Bản quyền thuộc về QiQiWedding</p>
+  </footer>
+
+<!-- Nút Zalo & Messenger -->
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px;">
+  <a href="https://zalo.me/0903986049" target="_blank" title="Liên hệ Zalo">
+    <img src="zalo.jpg" alt="Zalo" style="width: 50px; height: 50px;">
+  </a>
+  <a href="https://m.me/hamyquyen1" target="_blank" title="Nhắn Messenger">
+    <img src="mes.jpg" alt="Messenger" style="width: 50px; height: 50px;">
+  </a>
+</div>
+
+
+</body>
+</html>
