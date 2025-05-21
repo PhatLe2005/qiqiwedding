@@ -48,26 +48,36 @@
       margin-top: 15px;
       color: #8b4513;
     }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 10px;
-      justify-content: center;
-    }
-    .gallery img {
-      max-width: 100%;
-      width: 250px;
-      height: auto;
-      border-radius: 10px;
-      border: 2px solid #b8860b;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    }
-    .hidden {
+    
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* căn giữa nếu không đủ 3 ảnh */
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery img {
+  width: calc(33.333% - 14px); /* 3 ảnh chia đều */
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  object-fit: contain;
+  transition: transform 0.3s ease;
+position: relative;
+  z-index: 1;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+z-index: 10;
+}
+@media (max-width: 768px) {
+  .gallery img {
+    width: 100%; /* Mỗi ảnh chiếm hết chiều ngang */
+  }
+}
+.hidden {
       display: none;
     }
     .button {
@@ -112,22 +122,13 @@
       cursor: pointer;
     }
     .color-gallery {
-      display: none;
-      margin-top: 10px;
-    }
-    .color-gallery.active {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-.color-gallery img {
-  width: 50px;
-  height: 50;
-  border-radius: 10px;
-  border: 2px solid #b8860b;
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 600px;
+  margin: auto;
 }
 
-    }
   </style>
   <script>
     function toggleSection(id) {
@@ -142,13 +143,16 @@
       document.getElementById(groupId).classList.toggle("hidden");
     }
 
-    function showGallery(groupPrefix, color) {
-      const galleries = document.querySelectorAll(`[id^="${groupPrefix}-"]`);
-      galleries.forEach(g => g.classList.remove("active"));
-      const target = document.getElementById(`${groupPrefix}-${color}`);
-      if (target) target.classList.add("active");
+   function showGallery(baseId, color) {
+  const allColors = ['do', 'trang', 'hong'];
+  allColors.forEach(c => {
+    const gallery = document.getElementById(`${baseId}-${c}`);
+    if (gallery) {
+      gallery.style.display = (c === color) ? 'flex' : 'none';
     }
-  </script>
+  });
+}
+</script>
 </head>
 <body>
 
@@ -174,15 +178,15 @@
     <div id="trap-detail" class="hidden">
       <h3>Tráp Màu trắng</h3>
       <div class="gallery">
-        <img src="damngotrang.jpg" 
+        <img src="damngotrang.jpg" alt="Tráp Dạm Ngõ màu trắng" loading="lazy"/>
       </div>
       <h3>Tráp màu hồng</h3>
       <div class="gallery">
-        <img src="damngohong.jpg"      
+        <img src="damngohong.jpg" alt="Tráp Dạm Ngõ màu hổng" />     
 	</div>
       <h3>Tráp màu đỏ</h3>
       <div class="gallery">
-        <img src="damngodo.jpg"       
+        <img src="damngodo.jpg" alt="Tráp Dạm Ngõ màu đỏ" />      
 	</div>
     </div>
   </section>
@@ -204,8 +208,8 @@
     <button onclick="showGallery('mam6', 'trang')">Màu trắng</button>
   </div>
 
-  <div id="mam6-do" class="color-gallery">
-    <img src="trapdott6.jpg" alt="Mâm 6 quả màu đỏ">
+ <div id="mam6-do" class="color-gallery">
+     <img src="trapdott6.jpg" alt="Mâm 6 quả màu đỏ">
   </div>
 
   <div id="mam6-trang" class="color-gallery">
@@ -274,41 +278,60 @@
     <button onclick="showGallery('mam6-hientai', 'hong')">Màu hồng</button>
   </div>
 
-  <div id="mam6-hientai-do" class="color-gallery">
-    <img src="mam6-hientai-do-1.jpg" alt="Mâm 6 quả hiện đại màu đỏ">
-  </div>
+ <div id="mam6-hientai-do" class="gallery" style="display: none;">
+  <img src="dohd1.jpg" alt="Mâm 6 quả hiện đại màu trắng 1">
+  <img src="dohd2.jpg" alt="Mâm 6 quả hiện đại màu trắng 2">
+  <img src="dohd3.jpg" alt="Mâm 6 quả hiện đại màu trắng 3">
+  <img src="dohd4.jpg" alt="Mâm 6 quả hiện đại màu trắng 4">
+  <img src="dohd5.jpg" alt="Mâm 6 quả hiện đại màu trắng 5">
+  <img src="dohd6.jpg" alt="Mâm 6 quả hiện đại màu trắng 6">
+</div>
 
-  <div id="mam6-hientai-trang" class="color-gallery">
-    <img src="mam6-hientai-trang-1.jpg" alt="Mâm 6 quả hiện đại màu trắng">
-  </div>
-
-  <div id="mam6-hientai-hong" class="color-gallery">
-    <img src="mam6-hientai-hong-1.jpg" alt="Mâm 6 quả hiện đại màu hồng">
-  </div>
+<div id="mam6-hientai-trang" class="gallery" style="display: none;">
+  <img src="dohd1.jpg" alt="Mâm 6 quả hiện đại màu trắng 1">
+  <img src="dohd2.jpg" alt="Mâm 6 quả hiện đại màu trắng 2">
+  <img src="dohd3.jpg" alt="Mâm 6 quả hiện đại màu trắng 3">
+  <img src="dohd4.jpg" alt="Mâm 6 quả hiện đại màu trắng 4">
+  <img src="dohd5.jpg" alt="Mâm 6 quả hiện đại màu trắng 5">
+  <img src="dohd6.jpg" alt="Mâm 6 quả hiện đại màu trắng 6">
+</div>
+<div id="mam6-hientai-hong" class="gallery" style="display: none;">
+  <img src="dohd2.jpg" alt="Mâm 6 quả hiện đại màu trắng 1">
+  <img src="dohd1.jpg" alt="Mâm 6 quả hiện đại màu trắng 2">
+  <img src="dohd3.jpg" alt="Mâm 6 quả hiện đại màu trắng 3">
+  <img src="dohd4.jpg" alt="Mâm 6 quả hiện đại màu trắng 4">
+  <img src="dohd5.jpg" alt="Mâm 6 quả hiện đại màu trắng 5">
+  <img src="dohd6.jpg" alt="Mâm 6 quả hiện đại màu trắng 6">
+</div>
 </div>
 
 <!-- Mâm 7 quả -->
 <h4>Mâm 7 quả</h4>
 <button class="button" onclick="toggleColors('colors-7-hientai')">Chọn màu</button>
-<div id="colors-7-hientai" class="hidden">
+<div id="colors-6-hientai" class="hidden">
   <div class="color-options">
     <button onclick="showGallery('mam7-hientai', 'do')">Màu đỏ</button>
     <button onclick="showGallery('mam7-hientai', 'trang')">Màu trắng</button>
     <button onclick="showGallery('mam7-hientai', 'hong')">Màu hồng</button>
   </div>
 
-  <div id="mam7-hientai-do" class="color-gallery">
-    <img src="mam7-hientai-do-1.jpg" alt="Mâm 7 quả hiện đại màu đỏ">
-  </div>
-
-  <div id="mam7-hientai-trang" class="color-gallery">
-    <img src="mam7-hientai-trang-1.jpg" alt="Mâm 7 quả hiện đại màu trắng">
-  </div>
-
-  <div id="mam7-hientai-hong" class="color-gallery">
-    <img src="mam7-hientai-hong-1.jpg" alt="Mâm 7 quả hiện đại màu hồng">
-  </div>
+ <div id="mam7-hientai-do" class="color-gallery">
+  <img src="doh.jpg" alt="Mâm 6 quả hiện đại màu đỏ 1">
+  <img src="dohd.jpg" alt="Mâm 6 quả hiện đại màu đỏ 2">
+  <img src="do.jpg" alt="Mâm 6 quả hiện đại màu đỏ 3">
+  <img src="dohd.jpg" alt="Mâm 6 quả hiện đại màu đỏ 4">
+  <img src="doh.jpg" alt="Mâm 6 quả hiện đại màu đỏ 5">
+  <img src="doh.jpg" alt="Mâm 6 quả hiện đại màu đỏ 6">
 </div>
+<div id="mam7-hientai-trang" class="color-gallery">
+  <img src="dohdjj1.jpg" alt="Mâm 6 quả hiện đại màu trắng 1">
+  <img src="dohdhh2.jpg" alt="Mâm 6 quả hiện đại màu trắng 2">
+  <img src="dohdfd3.jpg" alt="Mâm 6 quả hiện đại màu trắng 3">
+  <img src="dohgd4.jpg" alt="Mâm 6 quả hiện đại màu trắng 4">
+  <img src="dohd5tt.jpg" alt="Mâm 6 quả hiện đại màu trắng 5">
+  <img src="dohdgg6.jpg" alt="Mâm 6 quả hiện đại màu trắng 6">
+</div>
+
 
 <!-- Mâm 8 quả -->
 <h4>Mâm 8 quả</h4>
@@ -387,4 +410,5 @@
 
 
 </body>
+
 </html>
